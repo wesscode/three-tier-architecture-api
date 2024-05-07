@@ -1,5 +1,6 @@
 ﻿using ApiThreeTier.Business.Interfaces;
 using ApiThreeTier.Business.Models;
+using ApiThreeTier.Business.Models.Validations;
 
 namespace ApiThreeTier.Business.Services
 {
@@ -12,11 +13,15 @@ namespace ApiThreeTier.Business.Services
         }
         public async Task Adicionar(Produto produto)
         {
+            if (!ExecutarValidacao(new ProdutoValidation(), produto)) return;
+
             await _produtoRepository.Adicionar(produto);
         }
 
         public async Task Atualizar(Produto produto)
         {
+            if (!ExecutarValidacao(new ProdutoValidation(), produto)) return;
+
             await _produtoRepository.Atualizar(produto);
         }
 

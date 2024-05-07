@@ -1,5 +1,6 @@
 ﻿using ApiThreeTier.Business.Interfaces;
 using ApiThreeTier.Business.Models;
+using ApiThreeTier.Business.Models.Validations;
 
 namespace ApiThreeTier.Business.Services
 {
@@ -15,6 +16,9 @@ namespace ApiThreeTier.Business.Services
         public async Task Adicionar(Fornecedor fornecedor)
         {
             // Validar se a entidade é consistente.
+            if (!ExecutarValidacao(new FornecedorValidation(), fornecedor) ||
+                !ExecutarValidacao(new EnderecoValidation(), fornecedor.Endereco)) return;
+
             // Validar se já não existe outro fornecedor com o mesmo documento.
 
             await _fornecedorRepository.Adicionar(fornecedor);
@@ -22,6 +26,8 @@ namespace ApiThreeTier.Business.Services
 
         public async Task Atualizar(Fornecedor fornecedor)
         {
+            if (!ExecutarValidacao(new FornecedorValidation(), fornecedor)) return;
+
             await _fornecedorRepository.Atualizar(fornecedor);
         }
 
