@@ -16,7 +16,7 @@ namespace ApiThreeTier.Data.Repository
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<IEnumerable<Produto>> ObterProdutosFornecedor()
+        public async Task<IEnumerable<Produto>> ObterProdutosFornecedores()
         {
             return await Db.Produtos.AsNoTracking()
                 .Include(x => x.Fornecedor)
