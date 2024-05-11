@@ -1,6 +1,5 @@
 ﻿using ApiThreeTier.API.Controllers;
 using ApiThreeTier.API.ViewModels;
-using DevIO.Api.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevIO.Api.Controllers
