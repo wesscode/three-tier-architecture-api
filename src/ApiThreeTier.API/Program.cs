@@ -13,6 +13,9 @@ builder.Services.AddDbContext<MeuDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+//Setando para o automapper onde está as classes profiles que ele implementa.
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); //AppDomain: Nativo que representa todo o ambiente onde a aplicação está sendo executada.
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
