@@ -1,3 +1,4 @@
+using ApiThreeTier.API.Configurations;
 using ApiThreeTier.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,8 @@ builder.Services.AddDbContext<MeuDbContext>(options =>
 
 //Setando para o automapper onde está as classes profiles que ele implementa.
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); //AppDomain: Nativo que representa todo o ambiente onde a aplicação está sendo executada.
+
+builder.Services.ResolveDependencies();
 
 var app = builder.Build();
 
